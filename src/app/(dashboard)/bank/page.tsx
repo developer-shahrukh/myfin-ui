@@ -1,10 +1,9 @@
 "use client";
-
 import { AgGridReact } from "ag-grid-react";
 import { useMemo, useState } from "react";
+import { ColDef } from "ag-grid-community";
 import {
   ClientSideRowModelModule,
-  ColDef,
   ModuleRegistry,
   NumberEditorModule,
   NumberFilterModule,
@@ -13,9 +12,8 @@ import {
   TextEditorModule,
   TextFilterModule,
   ValidationModule,
-    createGrid,
+  createGrid,
 } from "ag-grid-community";
-
 
 ModuleRegistry.registerModules([
   NumberEditorModule,
@@ -25,64 +23,56 @@ ModuleRegistry.registerModules([
   RowSelectionModule,
   PaginationModule,
   ClientSideRowModelModule,
-  ValidationModule,  
+  ValidationModule,
 ]);
 
-
 const page = () => {
-  const containerStyle = { width: "100%", height: "100%" };
+  const containerStyle = { height: "100%", width: "100%" };
   const gridStyle = { height: "100%", width: "100%" };
 
-  const[data, setData] = useState([
+  const [data, setData] = useState([
     {
       user: "user1",
-      accountName: "John Doe",
-      accountType: "CASH",
-      balance: "158656",
+      bankName: "sbi",
+      accountNumber: "6654623548",
+      branchName: "Palasiya",
+      ifscCode: "sbin003023",
     },
     {
       user: "user2",
-      accountName: "Tonny",
-      accountType: "BROKER",
-      balance: "95123654",
+      bankName: "Canera",
+      accountNumber: "1323654478",
+      branchName: "Khajrana indore",
+      ifscCode: "CANERA963458",
     },
     {
       user: "user3",
-      accountName: "Jonny",
-      accountType: "OTHER",
-      balance: "7455689",
+      bankName: "BOI",
+      accountNumber: "6356495496",
+      branchName: "Rajwada indore",
+      ifscCode: "BOI98945",
     },
     {
       user: "user4",
-      accountName: "Mikka",
-      accountType: "STOCK",
-      balance: "1234566",
+      bankName: "BOB",
+      accountNumber: "774596965485",
+      branchName: "Ujjain Towerchok",
+      ifscCode: "BOB02934",
     },
     {
       user: "user5",
-      accountName: "Jwal Singh",
-      accountType: "REAL_ESTATE",
-      balance: "687426",
+      bankName: "ICICI",
+      accountNumber: "8785463548",
+      branchName: "Freeganj",
+      ifscCode: "ICICI0935981",
     },
-    {
-      user: "user6",
-      accountName: "Amit Kumar",
-      accountType: "COMMODITY",
-      balance: "23354",
-    },
-    {
-      user: "user7",
-      accountName: "Sachin saxena",
-      accountType: "LOAN",
-      balance: "4655385",
-    },
-]);
-
-  const[columnDefs, setColumnDefs] = useState<ColDef[]>([
+  ]);
+  const [columnDefs, setColumnDefs] = useState<ColDef[]>([
     { field: "user" },
-    { field: "accountName" },
-    { field: "accountType" },
-    { field: "balance" },
+    { field: "bankName" },
+    { field: "accountNumber" },
+    { field: "branchName" },
+    { field: "ifscCode" },
   ]);
 
   const defaultColDef = useMemo(() => {
@@ -94,17 +84,14 @@ const page = () => {
     };
   }, []);
 
-  
   return (
     <div style={containerStyle}>
-      <h6>Accound Details</h6>
       <div style={gridStyle}>
         <AgGridReact
           rowData={data}
           columnDefs={columnDefs}
-          pagination={true}
           defaultColDef={defaultColDef}
-          rowSelection="multiple"
+          pagination={true}
         />
       </div>
     </div>

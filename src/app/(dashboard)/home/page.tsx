@@ -1,9 +1,17 @@
+import UserCard from "@/components/UserCard";
+import { Divider } from "@mui/material";
 
-
-const page=()=> {
+const page = () => {
   return (
-    <div>page</div>
-  )
-}
+    <div >
+      <div style={{display:'flex'}}>
+        <UserCard />
+        <UserCard />
+        <UserCard />
+        <UserCard />
+      </div>
+      </div>
+  );
+};
 
-export default page
+export default page;
