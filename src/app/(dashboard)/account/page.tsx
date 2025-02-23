@@ -13,9 +13,10 @@ import {
   TextEditorModule,
   TextFilterModule,
   ValidationModule,
-    createGrid,
+  createGrid,
 } from "ag-grid-community";
-
+import FormContainer from "@/components/FormContainer";
+import { Add, Delete, Update } from "@mui/icons-material";
 
 ModuleRegistry.registerModules([
   NumberEditorModule,
@@ -25,15 +26,14 @@ ModuleRegistry.registerModules([
   RowSelectionModule,
   PaginationModule,
   ClientSideRowModelModule,
-  ValidationModule,  
+  ValidationModule,
 ]);
-
 
 const page = () => {
   const containerStyle = { width: "100%", height: "100%" };
   const gridStyle = { height: "100%", width: "100%" };
 
-  const[data, setData] = useState([
+  const [data, setData] = useState([
     {
       user: "user1",
       accountName: "John Doe",
@@ -76,9 +76,9 @@ const page = () => {
       accountType: "LOAN",
       balance: "4655385",
     },
-]);
+  ]);
 
-  const[columnDefs, setColumnDefs] = useState<ColDef[]>([
+  const [columnDefs, setColumnDefs] = useState<ColDef[]>([
     { field: "user" },
     { field: "accountName" },
     { field: "accountType" },
@@ -94,11 +94,14 @@ const page = () => {
     };
   }, []);
 
-  
   return (
     <div style={containerStyle}>
       <h6>Accound Details</h6>
       <div style={gridStyle}>
+        <div style={{flex:'item-center', gap: '2', justifyContent:'center'}}>
+          
+        </div>
+
         <AgGridReact
           rowData={data}
           columnDefs={columnDefs}

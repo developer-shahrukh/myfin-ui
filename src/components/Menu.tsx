@@ -5,6 +5,7 @@ import {
   ClassOutlined,
   CreditScore,
   Dashboard,
+  Login,
   Paid,
   Payments,
   Settings,
