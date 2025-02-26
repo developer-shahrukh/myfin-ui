@@ -32,6 +32,20 @@ ModuleRegistry.registerModules([
   ValidationModule,
 ]);
 
+
+const getAccounts=()=>{
+  var promise=new Promise((resolve,reject)=>{
+    fetch(`/getAccount`).then((response)=>{
+      return response.json();
+    }).then((accounts)=>{
+      resolve(accounts);
+    }).catch((error)=>{
+      reject(error);
+    });
+  });
+  return promise;
+}
+
 const page = () => {
   const containerStyle = { width: "100%", height: "100%" };
   const gridStyle = { height: "100%", width: "100%" };
