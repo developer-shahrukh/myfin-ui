@@ -18,6 +18,7 @@ import {
   createGrid,
 } from "ag-grid-community";
 import { IconButton } from "@mui/material";
+import { AddCircleOutline } from "@mui/icons-material";
 
 ModuleRegistry.registerModules([
   NumberEditorModule,
@@ -31,7 +32,7 @@ ModuleRegistry.registerModules([
 ]);
 
 const page = () => {
-  const containerStyle = { height: "100%", width: "100%" };
+  const containerStyle = { width: "100%vw", height: "100%" };
   const gridStyle = { height: "100%", width: "100%" };
 
   const [data, setData] = useState([
@@ -121,6 +122,8 @@ const page = () => {
 
   return (
     <div style={containerStyle}>
+      <span className="absolute top-12 right-8 m-2"><AddCircleOutline/></span>
+      <br/>
       <div style={gridStyle}>
         <AgGridReact
           rowData={data}

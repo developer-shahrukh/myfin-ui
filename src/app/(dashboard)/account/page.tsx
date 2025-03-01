@@ -18,7 +18,7 @@ import {
   createGrid,
 } from "ag-grid-community";
 import FormContainer from "@/components/FormContainer";
-import { Add, Delete, Update } from "@mui/icons-material";
+import { Add, AddCircleOutline, Delete, Update } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 
 ModuleRegistry.registerModules([
@@ -47,7 +47,7 @@ const getAccounts=()=>{
 }
 
 const page = () => {
-  const containerStyle = { width: "100%", height: "100%" };
+  const containerStyle = { width: "100%vw", height: "100%" };
   const gridStyle = { height: "100%", width: "100%" };
 
   const [data, setData] = useState([
@@ -149,9 +149,11 @@ const page = () => {
 
   return (
     <div style={containerStyle} className="ag-theme-alpine">
+      <span className="absolute top-12 right-8 m-2"><button><AddCircleOutline/> </button> </span>
       <h6>Accound Details</h6>
       
       <div style={gridStyle}>
+      
         <div
           style={{ flex: "item-center", gap: "2", justifyContent: "center" }}
         ></div>

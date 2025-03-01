@@ -20,6 +20,7 @@ import {
 import { AgGridReact } from "ag-grid-react";
 import { useMemo, useState } from "react";
 import { IconButton } from "@mui/material";
+import { AddCircleOutline } from "@mui/icons-material";
 
 ModuleRegistry.registerModules([
   NumberEditorModule,
@@ -33,8 +34,8 @@ ModuleRegistry.registerModules([
 ]);
 
 const page = () => {
-  const containerStyle = { height: "100%", width: "100%" };
-  const gridStyle = { height: "90%", width: "100%" };
+  const containerStyle = { width: "100%vw", height: "100%" };
+  const gridStyle = { height: "100%", width: "100%" };
 
   const [data,setData]=useState([
     {user:"user1",loan:"loan",borrowerOrLenderName:"borrowername",amount:"466546",description:"some description",dueDate:"12/01/2025",status:"running",remainingBalance:"966546"},
@@ -94,6 +95,7 @@ const page = () => {
   },[])
   return (
     <div style={containerStyle}>
+       <span className="absolute top-12 right-8 m-2"><AddCircleOutline/></span>
       <div style={gridStyle}>
         <h1>Loan page</h1>
         <AgGridReact
