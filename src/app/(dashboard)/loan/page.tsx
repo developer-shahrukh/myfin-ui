@@ -21,6 +21,7 @@ import { AgGridReact } from "ag-grid-react";
 import { useMemo, useState } from "react";
 import { IconButton } from "@mui/material";
 import { AddCircleOutline } from "@mui/icons-material";
+import FormContainer from "@/components/FormContainer";
 
 ModuleRegistry.registerModules([
   NumberEditorModule,
@@ -95,7 +96,9 @@ const page = () => {
   },[])
   return (
     <div style={containerStyle}>
-       <span className="absolute top-12 right-8 m-2"><AddCircleOutline/></span>
+       <span className="fixed top-12 right-8 m-2 z-50">
+        <FormContainer type="create" table="loan" />
+      </span>
       <div style={gridStyle}>
         <h1>Loan page</h1>
         <AgGridReact

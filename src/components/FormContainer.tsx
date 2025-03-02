@@ -9,7 +9,7 @@ export type FormModalContainerProps={
 };
 
 const FormContainer=({table,type,data,id}:FormModalContainerProps)=>{
-    let relatedData={};
+    var relatedData={};
     return(
         <FormModal 
         table={table}

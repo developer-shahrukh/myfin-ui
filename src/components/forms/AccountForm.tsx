@@ -4,6 +4,9 @@ import { useRouter } from "next/navigation";
 import { Dispatch, SetStateAction, useActionState, useEffect } from "react";
 import InputField from "../InputField";
 import { useForm } from "react-hook-form";
+import { accountSchema, AccountSchema } from "@/lib/formValidationSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+
 
 const AccountForm = ({
   setOpen,
@@ -45,7 +48,16 @@ const AccountForm = ({
     },[state,router]);
 
     const {users}=relatedData;
-
+const accountTypes =([
+    "BANK",
+    "CASH",
+    "BROKER",
+    "OTHER",
+    "STOCK",
+    "REAL_ESTATE",
+    "COMMODITY",
+    "LOAN",
+  ]);
     return (
         <form className="flex flex-col gap-8" onSubmit={onSubmit}>
           <h1 className="text-xl font-semibold">
@@ -70,13 +82,6 @@ const AccountForm = ({
               error={errors?.accountName}
             />
             <InputField
-              label="Account type"
-              name="accountType"
-              defaultValue={data?.accountType}
-              register={register}
-              error={errors?.accountType}
-            />
-            <InputField
               label="Balance"
               name="balance"
               defaultValue={data?.balance}
@@ -95,10 +100,34 @@ const AccountForm = ({
               />
             )}
             <div className="flex flex-col gap-2 w-full md:w-1/4">
+              <label className="text-xs text-gray-500">Account Type</label>
+              <select
+                className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full max-h-20 overflow-y-auto"
+                {...register("accountType")}
+                defaultValue={
+                  type === "create" ? data?.accountTypes || "" : data?.accountTypes
+                }
+              >
+                <option value="" disabled>
+                  Account type
+                </option>
+                {accountTypes.map((accountType) => (
+                  <option value={accountType} key={accountType}>
+                    {accountType.replace("_"," ")}
+                  </option>
+                ))}
+              </select>
+              {errors.accountType?.message && (
+                <p className="text-xs text-red-400">
+                  {errors.accountType.message.toString()}
+                </p>
+              )}
+            </div>
+            <div className="flex flex-col gap-2 w-full md:w-1/4">
               <label className="text-xs text-gray-500">User</label>
               <select
                 className="ring-[1.5px] ring-gray-300 p-2 rounded-md text-sm w-full max-h-20 overflow-y-auto"
-                {...register("userId")}
+                {...register("user")}
                 defaultValue={
                   type === "create" ? data?.users || "" : data?.users
                 }
@@ -106,7 +135,7 @@ const AccountForm = ({
                 <option value="" disabled>
                   Select a User
                 </option>
-                {users.map((user: { id: number; name: string }) => (
+                {users && users.map((user: { id: number; name: string }) => (
                   <option value={user.id} key={user.id}>
                     {user.name}
                   </option>

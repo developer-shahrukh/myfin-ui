@@ -1,21 +1,21 @@
 
 export const deleteAccount=()=>{
-
+    return {success:true,error:false};
 }
 export const deleteUser=()=>{
-
+    return {success:true,error:false};
 }
 export const deletePayment=()=>{
-
+    return {success:true,error:false};
 }
 export const deleteBank=()=>{
-
+    return {success:true,error:false};
 }
 export const deleteLoan=()=>{
-
+    return {success:true,error:false};
 }
 export const deleteTransaction=()=>{
-
+    return {success:true,error:false};
 }
 
 

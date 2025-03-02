@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
   Dispatch,
@@ -8,15 +8,23 @@ import {
   useState,
 } from "react";
 import { FormModalContainerProps } from "./FormContainer";
-import { Add, Close } from "@mui/icons-material";
-import { deleteAccount } from "@/lib/actions";
+import { AddCircleRounded, Close } from "@mui/icons-material";
+import { deleteAccount, deleteLoan, deleteTransaction, deleteUser } from "@/lib/actions";
 import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
 
+const AccountForm = dynamic(() => import("./forms/AccountForm"), {
+  loading: () => <h1>Loading...</h1>,
+});
 
 const deleteActionMap = {
   account: deleteAccount,
+  loan: deleteLoan,
+  user:deleteUser,
+  transaction:deleteTransaction,
 };
 
+// Ensure forms return JSX
 const forms: {
   [key: string]: (
     setOpen: Dispatch<SetStateAction<boolean>>,
@@ -25,9 +33,9 @@ const forms: {
     relatedData?: any
   ) => JSX.Element;
 } = {
-  account:(setOpen,type,data,relatedData)=>{
-    
-  }
+  account: (setOpen, type, data, relatedData) => (
+    <AccountForm setOpen={setOpen} type={type} data={data} relatedData={relatedData} />
+  ),
 };
 
 const FormModal = ({
@@ -35,7 +43,8 @@ const FormModal = ({
   type,
   data,
   id,
-}: FormModalContainerProps & { relatedData: any }) => {
+  relatedData,
+}: FormModalContainerProps & { relatedData?: any }) => {
   const [open, setOpen] = useState(false);
 
   const Form = () => {
@@ -55,7 +64,7 @@ const FormModal = ({
 
     return type === "delete" && id ? (
       <form action={formAction} className="p-4 flex flex-col gap-4">
-        <input type="text | number" name="id" value={id} hidden />
+        <input type="hidden" name="id" value={id}/>
         <span className="text-center font-medium">
           All data will be lost. Are you sure you want to delete this {table}?
         </span>
@@ -71,16 +80,17 @@ const FormModal = ({
   };
 
   return (
-    <>
+    <div className="relative">
       <button
-        className={`w-7 h-7 flex items-center justify-center rounded-full gray`}
+        className="w-7 h-7 flex items-center justify-center rounded-full bg-gray-300"
         onClick={() => setOpen(true)}
       >
-        <Add />
+        <AddCircleRounded />
       </button>
+
       {open && (
-        <div className="w-screen h-screen absolute left-0 top-0 bg-black bg-opacity-60 z-50 flex items-center justify-center">
-          <div className="bg-white p-4 rounded-md relative w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] 2xl:w-[40%]">
+        <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg relative w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] 2xl:w-[40%]">
             <Form />
             <div
               className="absolute top-4 right-4 cursor-pointer"
@@ -91,7 +101,7 @@ const FormModal = ({
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
