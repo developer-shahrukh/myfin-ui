@@ -16,6 +16,19 @@ import dynamic from "next/dynamic";
 const AccountForm = dynamic(() => import("./forms/AccountForm"), {
   loading: () => <h1>Loading...</h1>,
 });
+const UserForm = dynamic(() => import("./forms/UserForm"), {
+  loading: () => <h1>Loading...</h1>,
+});
+const BankForm = dynamic(() => import("./forms/BankForm"), {
+  loading: () => <h1>Loading...</h1>,
+});
+const LoanForm = dynamic(() => import("./forms/LoanForm"), {
+  loading: () => <h1>Loading...</h1>,
+});
+const TransactionForm = dynamic(() => import("./forms/TransactionForm"), {
+  loading: () => <h1>Loading...</h1>,
+});
+
 
 const deleteActionMap = {
   account: deleteAccount,
@@ -35,6 +48,18 @@ const forms: {
 } = {
   account: (setOpen, type, data, relatedData) => (
     <AccountForm setOpen={setOpen} type={type} data={data} relatedData={relatedData} />
+  ),
+  user: (setOpen, type, data, relatedData) => (
+    <UserForm setOpen={setOpen} type={type} data={data} relatedData={relatedData} />
+  ),
+  bank: (setOpen, type, data, relatedData) => (
+    <BankForm setOpen={setOpen} type={type} data={data} relatedData={relatedData} />
+  ),
+  loan: (setOpen, type, data, relatedData) => (
+    <LoanForm setOpen={setOpen} type={type} data={data} relatedData={relatedData} />
+  ),
+  transaction: (setOpen, type, data, relatedData) => (
+    <TransactionForm setOpen={setOpen} type={type} data={data} relatedData={relatedData} />
   ),
 };
 

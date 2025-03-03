@@ -26,65 +26,32 @@ export const updateAccount=(data)=>{
     return {success:true,error:false};
 }
 
-const getUsers=()=>{
-    var promise=new Promise((resolve,reject)=>{
-        fetch(`/getUsers`).then((response)=>{
-            return response.json();
-        }).then((users)=>{
-            resolve(users);
-        }).catch((error)=>{
-            reject(error);
-        });
-    });
+export const createUser=(data)=>{
+    return {success:true,error:false};
+}
+export const updateUser=(data)=>{
+    return {success:true,error:false};
 }
 
-const getUserByCode=()=>{
-    var userCode=0;
-    var promise=new Promise((resolve,reject)=>{
-        fetch(`/getUser${userCode}`).then((response)=>{
-            return response.json();
-        }).then((user)=>{
-            resolve(user);
-        }).catch((error)=>{
-            reject(error);
-        });
-    });
+export const createBank=(data)=>{
+    return {success:true,error:false};
 }
-
-const getAccounts=()=>{
-    var promise=new Promise((resolve,reject)=>{
-        fetch(`/getAccounts`).then((response)=>{
-            return response.json();
-        }).then((accounts)=>{
-            resolve(accounts);
-        }).catch((error)=>{
-            reject(error);
-        });
-    });
+export const updateBank=(data)=>{
+    return {success:true,error:false};
 }
 
 
-const getAccountByCode=()=>{
-    var accountCode=0;
-    var promise=new Promise((resolve,reject)=>{
-        fetch(`/getAccount${accountCode}`).then((response)=>{
-            return response.json();
-        }).then((account)=>{
-            resolve(account);
-        }).catch((error)=>{
-            reject(error);
-        });
-    });
+export const createLoan=(data)=>{
+    return {success:true,error:false};
+}
+export const updateLoan=(data)=>{
+    return {success:true,error:false};
 }
 
-const getLoan=()=>{
-    var promise=new Promise((resolve,reject)=>{
-    fetch(`/getLoan`).then((response)=>{
-        return response.json()
-    }).then((loan)=>{
-        resolve(loan);
-    }).catch((error)=> {
-        reject(error);
-    });
-});
+
+export const createTransaction=(data)=>{
+    return {success:true,error:false};
+}
+export const updateTransaction=(data)=>{
+    return {success:true,error:false};
 }
