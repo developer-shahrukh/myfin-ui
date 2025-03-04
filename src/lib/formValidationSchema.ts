@@ -61,7 +61,6 @@ export const loanSchema = z.object({
   loanStatus: loanStatus,
   remainingBalance: z.number().min(1, "Remaining balance required"),
 });
-
 export type LoanSchema = z.infer<typeof loanSchema>;
 
 export const transactionSchema = z.object({
@@ -74,5 +73,4 @@ export const transactionSchema = z.object({
   category:z.string().min(1,"Enter category type"),
   subCategory:z.string().min(1,"Enter sub category type"),
 });
-
 export type TransactionSchema = z.infer<typeof transactionSchema>;
