@@ -113,3 +113,47 @@ const getTransaction = () => {
   });
   return promise;
 };
+
+
+const getTransactionByCode = (transactionCode) => {
+  var promise = new Promise((resolve, reject) => {
+    fetch(`${baseURL}/transactions/getTransaction${transactionCode}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((loan) => {
+        resolve(loan);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+  return promise;
+};
+
+const getCategory=()=>{
+  var promise=new Promise((resolve,reject)=>{
+    fetch(`${baseURL}/categories/getCategories`).then((response)=>{
+      return response.json();
+    }).then((categories)=>{
+      resolve(categories)
+    }).catch((error)=>{
+      reject(error);
+    });
+  });
+  return promise;
+}
+
+
+const getCategoryByCode=(categoryCode)=>{
+  var promise=new Promise((resolve,reject)=>{
+    fetch(`${baseURL}/categories/getCategory${categoryCode}`).then((response)=>{
+      return response.json();
+    }).then((categories)=>{
+      resolve(categories)
+    }).catch((error)=>{
+      reject(error);
+    });
+  });
+  return promise;
+}
