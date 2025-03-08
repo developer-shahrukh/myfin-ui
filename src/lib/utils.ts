@@ -114,7 +114,6 @@ const getTransaction = () => {
   return promise;
 };
 
-
 const getTransactionByCode = (transactionCode) => {
   var promise = new Promise((resolve, reject) => {
     fetch(`${baseURL}/transactions/getTransaction${transactionCode}`)
@@ -131,29 +130,58 @@ const getTransactionByCode = (transactionCode) => {
   return promise;
 };
 
-const getCategory=()=>{
-  var promise=new Promise((resolve,reject)=>{
-    fetch(`${baseURL}/categories/getCategories`).then((response)=>{
-      return response.json();
-    }).then((categories)=>{
-      resolve(categories)
-    }).catch((error)=>{
-      reject(error);
-    });
+const getCategory = () => {
+  var promise = new Promise((resolve, reject) => {
+    fetch(`${baseURL}/categories/getCategories`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((categories) => {
+        resolve(categories);
+      })
+      .catch((error) => {
+        reject(error);
+      });
   });
   return promise;
-}
+};
 
-
-const getCategoryByCode=(categoryCode)=>{
-  var promise=new Promise((resolve,reject)=>{
-    fetch(`${baseURL}/categories/getCategory${categoryCode}`).then((response)=>{
-      return response.json();
-    }).then((categories)=>{
-      resolve(categories)
-    }).catch((error)=>{
-      reject(error);
-    });
+const getCategoryByCode = (categoryCode) => {
+  var promise = new Promise((resolve, reject) => {
+    fetch(`${baseURL}/categories/getCategory${categoryCode}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((categories) => {
+        resolve(categories);
+      })
+      .catch((error) => {
+        reject(error);
+      });
   });
   return promise;
-}
+};
+
+const getSubCategories = () => {
+  var promise = new Promise((resolve, reject) => {
+    fetch(`${baseURL}/getSubCategories`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((subCategories) => resolve(subCategories))
+      .catch((error) => reject(error));
+  });
+  return promise;
+};
+
+const getSubCategoriesByCode = (subCategoriesCode) => {
+  var promise = new Promise((resolve, reject) => {
+    fetch(`${baseURL}/getSubCategory${subCategoriesCode}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((subCategory) => resolve(subCategory))
+      .catch((error) => reject(error));
+  });
+  return promise;
+};
