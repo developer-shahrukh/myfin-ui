@@ -66,6 +66,33 @@ const getAccountByCode = () => {
   return promise;
 };
 
+const getBank=()=>{
+  var promise=new Promise((resolve,reject)=>{
+    fetch(`${baseURL}/getBanks`).then((response)=>{
+      return response.json();
+    }).then((banks)=>{
+      resolve(banks);
+    }).catch((error)=>{
+      reject(error);
+    })
+  });
+  return promise;
+}
+
+const getBankByCode=(bankCode)=>{
+  var promise=new Promise((resolve,reject)=>{
+    fetch(`${baseURL}/getBank${bankCode}`).then((response)=>{
+      return response.json();
+    }).then((bank)=>{
+      resolve(bank);
+    }).catch((error)=>{
+      reject(error);
+    })
+  });
+  return promise;
+}
+
+
 const getLoans = () => {
   var promise = new Promise((resolve, reject) => {
     fetch(`${baseURL}/loans/getLoans`)
