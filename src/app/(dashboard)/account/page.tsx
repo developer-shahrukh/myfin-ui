@@ -111,11 +111,11 @@ const page = () => {
     /*alert(`Edit row: ${params.data.user}`);
     const newData = data.filter((row) => row.id !== params.data.id);
     setData(newData);*/
-   
+    alert(`Edit modal`);
     setOpenModal(true);
     setSelectedRow(data);
     setModalType("update");
-   
+    alert(`Updated done`);
     
   };
 
