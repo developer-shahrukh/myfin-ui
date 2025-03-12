@@ -74,3 +74,24 @@ export const transactionSchema = z.object({
   subCategory:z.string().min(1,"Enter sub category type"),
 });
 export type TransactionSchema = z.infer<typeof transactionSchema>;
+
+export const loanPaymentSchema = z.object({
+  loanPaymentId: z.number().optional(),
+  loan: z.string().min(1, "Loan is required"),
+  paymentAmount: z.number().min(0, "Cannot be negative"),
+  paymentDate: z.coerce.date().optional(),
+});
+export type LoanPaymentSchema = z.infer<typeof loanPaymentSchema>;
+
+export const categorySchema = z.object({
+  categoryId: z.number().optional(),
+  name: z.string().min(1, "Category is required"),
+});
+export type CategorySchema = z.infer<typeof categorySchema>;
+
+export const subCategorySchema = z.object({
+  subCategoryId: z.number().optional(),
+  category: z.string().min(1, "Category at least one user"),
+  subCategoryName: z.string().min(1, "Subcategory is required"),
+});
+export type SubCategorySchema = z.infer<typeof subCategorySchema>;

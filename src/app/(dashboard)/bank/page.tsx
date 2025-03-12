@@ -126,7 +126,7 @@ const page = () => {
       <span className="fixed top-12 right-8 m-2 z-50">
         <FormContainer type="create" table="bank" />
       </span>
-      <br/>
+      <h6>Bank Details</h6>
       <div style={gridStyle}>
         <AgGridReact
           rowData={data}

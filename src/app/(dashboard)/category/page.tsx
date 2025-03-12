@@ -125,10 +125,10 @@ const page = () => {
   return (
     <div style={containerStyle} className="ag-theme-alpine">
       <span className="fixed top-12 right-8 m-2 z-50">
-        <FormContainer type="create" table="account" />
+        <FormContainer type="create" table="category" />
       </span>
 
-      <h6>Categories</h6>
+      <h6>Category Details</h6>
 
       <div style={gridStyle}>
         <div
