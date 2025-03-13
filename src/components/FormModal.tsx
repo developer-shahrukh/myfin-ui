@@ -9,7 +9,7 @@ import {
 } from "react";
 import { FormModalContainerProps } from "./FormContainer";
 import { AddCircleRounded, Close } from "@mui/icons-material";
-import { deleteAccount, deleteLoan, deleteTransaction, deleteUser } from "@/lib/actions";
+import { deleteAccount, deleteCategory, deleteLoan, deleteLoanPayment, deleteSubCategory, deleteTransaction, deleteUser } from "@/lib/actions";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 
@@ -28,13 +28,24 @@ const LoanForm = dynamic(() => import("./forms/LoanForm"), {
 const TransactionForm = dynamic(() => import("./forms/TransactionForm"), {
   loading: () => <h1>Loading...</h1>,
 });
-
+const LoanPaymentForm = dynamic(() => import("./forms/LoanPaymentForm"), {
+  loading: () => <h1>Loading...</h1>,
+});
+const CategoryForm = dynamic(() => import("./forms/CategoryForm"), {
+  loading: () => <h1>Loading...</h1>,
+});
+const SubCategoryForm = dynamic(() => import("./forms/SubCategoryForm"), {
+  loading: () => <h1>Loading...</h1>,
+});
 
 const deleteActionMap = {
   account: deleteAccount,
   loan: deleteLoan,
   user:deleteUser,
   transaction:deleteTransaction,
+  category:deleteCategory,
+  subCategory:deleteSubCategory,
+  loanPayment: deleteLoanPayment,
 };
 
 // Ensure forms return JSX
@@ -60,6 +71,15 @@ const forms: {
   ),
   transaction: (setOpen, type, data, relatedData) => (
     <TransactionForm setOpen={setOpen} type={type} data={data} relatedData={relatedData} />
+  ),
+  category: (setOpen, type, data, relatedData) => (
+    <CategoryForm setOpen={setOpen} type={type} data={data} relatedData={relatedData} />
+  ),
+  subCategory: (setOpen, type, data, relatedData) => (
+    <SubCategoryForm setOpen={setOpen} type={type} data={data} relatedData={relatedData} />
+  ),
+  loanPayment: (setOpen, type, data, relatedData) => (
+    <LoanPaymentForm setOpen={setOpen} type={type} data={data} relatedData={relatedData} />
   ),
 };
 

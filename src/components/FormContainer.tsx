@@ -2,7 +2,7 @@ import FormModal from "./FormModal";
 
 
 export type FormModalContainerProps={
-    table: | "user" | "account" | "loan" | "bank" | "transaction";
+    table: | "user" | "account" | "loan" | "bank" | "transaction" | "category" | "subCategory" | "loanPayment";
     type : "create" | "update" | "delete";
     data ?: any;
     id? : string | number;

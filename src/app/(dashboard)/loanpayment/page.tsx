@@ -137,11 +137,9 @@ const page = () => {
   return (
     <div style={containerStyle} className="ag-theme-alpine">
       <span className="fixed top-12 right-8 m-2 z-50">
-        <FormContainer type="create" table="account" />
+        <FormContainer type="create" table="loanPayment" />
       </span>
-
-      <h6>Loan Payments</h6>
-
+      <h6>Loan Payments Details</h6>
       <div style={gridStyle}>
         <div
           style={{ flex: "item-center", gap: "2", justifyContent: "center" }}
