@@ -33,6 +33,14 @@ const getUserByCode = () => {
   return promise;
 };
 
+const deleteUser=(userCode)=>{
+  fetch(`${baseURL}deleteUser/${userCode}`).then((response)=>{
+    return response;
+  }).catch((error)=>{
+    return error;
+  });
+}
+
 const getAccounts = () => {
   var promise = new Promise((resolve, reject) => {
     fetch(`${baseURL}/accounts/getAccounts`)
@@ -65,6 +73,14 @@ const getAccountByCode = () => {
   });
   return promise;
 };
+
+const deleteAccount=(accountId)=>{
+  fetch(`${baseURL}/deleteAccount/${accountId}`).then((response)=>{
+    return response;
+  }).catch((error)=>{
+    return error;
+  });
+}
 
 const getBank=()=>{
   var promise=new Promise((resolve,reject)=>{
