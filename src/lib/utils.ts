@@ -109,6 +109,14 @@ const getBankByCode=(bankCode)=>{
 }
 
 
+const deleteBank=(bankId)=>{
+  fetch(`${baseURL}/deleteBank/${bankId}`).then((response)=>{
+    return response;
+  }).catch((error)=>{
+    return error;
+  });
+}
+
 const getLoans = () => {
   var promise = new Promise((resolve, reject) => {
     fetch(`${baseURL}/loans/getLoans`)
@@ -140,6 +148,15 @@ const getLoanByCode = (loanId) => {
   });
   return promise;
 };
+
+
+const deleteLoan=(loanId)=>{
+  fetch(`${baseURL}/deleteLoan/${loanId}`).then((response)=>{
+    return response;
+  }).catch((error)=>{
+    return error;
+  });
+}
 
 const getTransaction = () => {
   var promise = new Promise((resolve, reject) => {
