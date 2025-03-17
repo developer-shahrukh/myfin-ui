@@ -190,6 +190,15 @@ const getTransactionByCode = (transactionCode) => {
   return promise;
 };
 
+
+const deleteTransaction=(transactionId)=>{
+  fetch(`${baseURL}/deleteTransaction/${transactionId}`).then((response)=>{
+    return response;
+  }).catch((error)=>{
+    return error;
+  });
+}
+
 const getCategory = () => {
   var promise = new Promise((resolve, reject) => {
     fetch(`${baseURL}/categories/getCategories`)
@@ -221,6 +230,15 @@ const getCategoryByCode = (categoryCode) => {
   });
   return promise;
 };
+
+
+const deleteCategory=(categoryId)=>{
+  fetch(`${baseURL}/deleteAccount/${categoryId}`).then((response)=>{
+    return response;
+  }).catch((error)=>{
+    return error;
+  });
+}
 
 const getSubCategories = () => {
   var promise = new Promise((resolve, reject) => {
