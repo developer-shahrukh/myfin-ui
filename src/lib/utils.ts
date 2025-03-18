@@ -233,7 +233,7 @@ const getCategoryByCode = (categoryCode) => {
 
 
 const deleteCategory=(categoryId)=>{
-  fetch(`${baseURL}/deleteAccount/${categoryId}`).then((response)=>{
+  fetch(`${baseURL}/deleteCategory/${categoryId}`).then((response)=>{
     return response;
   }).catch((error)=>{
     return error;
@@ -263,3 +263,12 @@ const getSubCategoriesByCode = (subCategoriesCode) => {
   });
   return promise;
 };
+
+
+const deleteSubCategory=(subCategoryId)=>{
+  fetch(`${baseURL}/deleteSubCategory/${subCategoryId}`).then((response)=>{
+    return response;
+  }).catch((error)=>{
+    return error;
+  });
+}
