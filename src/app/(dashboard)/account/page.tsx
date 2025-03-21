@@ -48,6 +48,22 @@ const getAccounts = () => {
   return promise;
 };
 
+const getAccountByCode = (accountCode) => {
+  var promise = new Promise((resolve, reject) => {
+    fetch(`/getAccountByCode${accountCode}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((account) => {
+        resolve(account);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+  return promise;
+};
+
 const page = () => {
   const containerStyle = { width: "100%vw", height: "100%" };
   const gridStyle = { height: "100%", width: "100%" };
