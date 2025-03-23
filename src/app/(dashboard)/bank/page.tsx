@@ -32,9 +32,16 @@ ModuleRegistry.registerModules([
   ValidationModule,
 ]);
 
+
 const page = () => {
   const containerStyle = { width: "100%vw", height: "100%" };
   const gridStyle = { height: "100%", width: "100%" };
+  const [banks,setBanks]=useState([]);
+  const useEffect(()=>{
+    getBank().then((banks)=>{
+      setBanks(banks);
+    })
+  },[]);
 
   const [data, setData] = useState([
     {
