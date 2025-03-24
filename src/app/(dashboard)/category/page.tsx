@@ -48,6 +48,13 @@ const getCategories = () => {
   return promise;
 };
 
+const getCategoryByCode = (categoryCode) => {
+  getCategoryByCode(categoryCode).then((category)=>{
+    console.log(category);
+  });
+};
+
+
 const page = () => {
   const containerStyle = { width: "100%vw", height: "100%" };
   const gridStyle = { height: "100%", width: "100%" };
