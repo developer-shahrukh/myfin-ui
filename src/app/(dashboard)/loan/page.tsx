@@ -18,7 +18,7 @@ import {
   createGrid,
 } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { IconButton } from "@mui/material";
 import { AddCircleOutline } from "@mui/icons-material";
 import FormContainer from "@/components/FormContainer";
@@ -34,9 +34,19 @@ ModuleRegistry.registerModules([
   ValidationModule,
 ]);
 
+
 const page = () => {
   const containerStyle = { width: "100%vw", height: "100%" };
   const gridStyle = { height: "100%", width: "100%" };
+  const [loans,setLoans]=useState([]);
+
+
+  useEffect(()=>{
+    getLoans().then((loans)=>{
+      setLoans(loans);
+    });
+  },[loans])
+  
 
   const [data,setData]=useState([
     {user:"user1",loan:"loan",borrowerOrLenderName:"borrowername",amount:"466546",description:"some description",dueDate:"12/01/2025",status:"running",remainingBalance:"966546"},
