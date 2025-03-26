@@ -2,7 +2,7 @@
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { AgGridReact } from "ag-grid-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ClientSideRowModelModule,
   ColDef,
@@ -61,6 +61,12 @@ const page = () => {
   const [openModal, setOpenModal] = useState(false);
   const [modalType, setModalType] = useState<"update" | "delete" | null>(null);
   const [selectedRow, setSelectedRow] = useState(null);
+  const [categories,setCategories]=useState([]);
+  useEffect(()=>{
+      getCategories().then((categories)=>{
+        setCategories(categories);
+      });
+  },[]);
 
   const [data, setData] = useState([
     {
