@@ -3,7 +3,7 @@
 
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AgGridReact } from "ag-grid-react";
 import {
   ClientSideRowModelModule,
@@ -37,6 +37,14 @@ ModuleRegistry.registerModules([
 const page = () => {
   const containerStyle = { height: "100%", width: "100%vw" };
   const gridStyle = { height: "90%", width: "100%" };
+
+  const [transaction,setTransaction]=useState([]);
+
+  useEffect(()=>{
+    getTransaction().then((transactions)=>{
+      setTransaction(transactions);
+    })
+  },[]);
 
   const [data, setData] = useState([
     {
