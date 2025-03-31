@@ -39,10 +39,13 @@ const page = () => {
   const gridStyle = { height: "100%", width: "100%" };
 
   const [users,setUsers]=useState([]);
-
+  const [userById,setUserById]=useState([]);
   useEffect(()=>{
     getUsers().then((users)=>{
       setUsers(users);
+    });
+    getUserByCode().then((user)=>{
+      setUserById(user);
     });
   },[]);
 
