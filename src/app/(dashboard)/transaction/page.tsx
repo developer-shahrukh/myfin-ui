@@ -38,11 +38,14 @@ const page = () => {
   const containerStyle = { height: "100%", width: "100%vw" };
   const gridStyle = { height: "90%", width: "100%" };
 
-  const [transaction,setTransaction]=useState([]);
-
+  const [transactions,setTransactions]=useState([]);
+  const [transactionId,setTransactionById]=useState([]);
   useEffect(()=>{
     getTransaction().then((transactions)=>{
       setTransaction(transactions);
+    });
+    getTransactionByCode().then((transactionId)=>{
+      setTransactionById(transactionId);
     })
   },[]);
 
