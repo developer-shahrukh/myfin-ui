@@ -56,11 +56,15 @@ const page = () => {
   const [selectedRow, setSelectedRow] = useState(null);
 
   const [subCategories,setSubCategories]=useState([]);
+  const [subCategoryByCode,setSubCategoryByCode]=useState([]);
 
   useEffect(()=>{
     getSubCategories().then((subCategories)=>{
       setSubCategories(subCategories);
     });
+    getSubCategoryByCode().then((category)=>{
+      setSubCategoryByCode(category);
+    })
   },[]);
 
   const [data, setData] = useState([
