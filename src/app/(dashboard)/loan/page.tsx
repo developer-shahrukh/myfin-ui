@@ -39,12 +39,15 @@ const page = () => {
   const containerStyle = { width: "100%vw", height: "100%" };
   const gridStyle = { height: "100%", width: "100%" };
   const [loans,setLoans]=useState([]);
-
+  const [loan,setLoan]=useState([]);
 
   useEffect(()=>{
     getLoans().then((loans)=>{
       setLoans(loans);
     });
+    getLoanByCode().then((loan)=>{
+      setLoans(loan);
+    })
   },[loans])
   
 
