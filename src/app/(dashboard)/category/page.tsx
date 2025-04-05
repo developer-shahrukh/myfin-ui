@@ -61,10 +61,15 @@ const page = () => {
   const [openModal, setOpenModal] = useState(false);
   const [modalType, setModalType] = useState<"update" | "delete" | null>(null);
   const [selectedRow, setSelectedRow] = useState(null);
+  
   const [categories,setCategories]=useState([]);
+  const [category,setCategory]=useState([]);
   useEffect(()=>{
       getCategories().then((categories)=>{
         setCategories(categories);
+      });
+      getCategoryByCode().then((category)=>{
+        setCategory(category);
       });
   },[]);
 
