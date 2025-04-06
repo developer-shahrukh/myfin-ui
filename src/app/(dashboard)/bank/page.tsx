@@ -37,10 +37,15 @@ const page = () => {
   const containerStyle = { width: "100%vw", height: "100%" };
   const gridStyle = { height: "100%", width: "100%" };
   const [banks,setBanks]=useState([]);
+  const [bank,setBank]=useState([]);
+
   const useEffect(()=>{
     getBank().then((banks)=>{
       setBanks(banks);
-    })
+    });
+    getBankByCode(bankCode).then((bankByCode)=>{
+      setBank(bankByCode);
+    });
   },[]);
 
   const [data, setData] = useState([
