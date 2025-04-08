@@ -2,7 +2,7 @@
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { AgGridReact } from "ag-grid-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   ClientSideRowModelModule,
   ColDef,
@@ -32,37 +32,7 @@ ModuleRegistry.registerModules([
   ValidationModule,
 ]);
 
-const getAccounts = () => {
-  var promise = new Promise((resolve, reject) => {
-    fetch(`/getAccount`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((accounts) => {
-        resolve(accounts);
-      })
-      .catch((error) => {
-        reject(error);
-      });
-  });
-  return promise;
-};
 
-const getAccountByCode = (accountCode) => {
-  var promise = new Promise((resolve, reject) => {
-    fetch(`/getAccountByCode${accountCode}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((account) => {
-        resolve(account);
-      })
-      .catch((error) => {
-        reject(error);
-      });
-  });
-  return promise;
-};
 
 const page = () => {
   const containerStyle = { width: "100%vw", height: "100%" };
@@ -71,6 +41,17 @@ const page = () => {
   const [modalType, setModalType] = useState<"update" | "delete" | null>(null);
   const [selectedRow, setSelectedRow] = useState(null);
 
+  const [accounts,setAccounts]=useState([]);
+  const [account,setAccount]=useState([]);
+
+  useEffect(()=>{
+    getAccounts().then((acc)=>{
+      setAccounts(acc);
+    });
+    getAccountByCode(accountCode).then((acc)=>{
+      setAccount(acc);
+    });
+  },[]);
   const [data, setData] = useState([
     {
       id: 1,
