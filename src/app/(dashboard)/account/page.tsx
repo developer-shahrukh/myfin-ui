@@ -45,11 +45,11 @@ const page = () => {
   const [account,setAccount]=useState([]);
 
   useEffect(()=>{
-    getAccounts().then((acc)=>{
-      setAccounts(acc);
+    getAccounts().then((accountDetails)=>{
+      setAccounts(accountDetails);
     });
-    getAccountByCode(accountCode).then((acc)=>{
-      setAccount(acc);
+    getAccountByCode(accountCode).then((accountDetail)=>{
+      setAccount(accountDetail);
     });
   },[]);
   const [data, setData] = useState([
