@@ -56,10 +56,13 @@ const page = () => {
   const [selectedRow, setSelectedRow] = useState(null);
 
   const [loanPayments,setLoanPayments]=useState([]);
-
+  const [loanPaymentByCode,setLoanPaymentByCode]=useState([]);
   useEffect(()=>{
     getLoanPayments().then((loanPayment)=>{
       setLoanPayments(loanPayment);
+    });
+    getLoanByCode(code).then((loanDetails)=>{
+      setLoanPaymentByCode(loanDetails)
     });
   },[])
 
