@@ -44,7 +44,7 @@ const page = () => {
     getUsers().then((users)=>{
       setUsers(users);
     });
-    getUserByCode().then((user)=>{
+    getUserByCode(userCode).then((user)=>{
       setUserById(user);
     });
   },[]);

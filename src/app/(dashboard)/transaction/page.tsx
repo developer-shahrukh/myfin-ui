@@ -44,7 +44,7 @@ const page = () => {
     getTransaction().then((transactions)=>{
       setTransaction(transactions);
     });
-    getTransactionByCode().then((transactionId)=>{
+    getTransactionByCode(transactionCode).then((transactionId)=>{
       setTransactionById(transactionId);
     })
   },[]);

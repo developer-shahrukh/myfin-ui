@@ -68,7 +68,7 @@ const page = () => {
       getCategories().then((categories)=>{
         setCategories(categories);
       });
-      getCategoryByCode().then((category)=>{
+      getCategoryByCode(categoryCode).then((category)=>{
         setCategory(category);
       });
   },[]);

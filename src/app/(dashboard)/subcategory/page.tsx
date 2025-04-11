@@ -62,7 +62,7 @@ const page = () => {
     getSubCategories().then((subCategories)=>{
       setSubCategories(subCategories);
     });
-    getSubCategoryByCode().then((category)=>{
+    getSubCategoryByCode(sabCategoryCode).then((category)=>{
       setSubCategoryByCode(category);
     })
   },[]);

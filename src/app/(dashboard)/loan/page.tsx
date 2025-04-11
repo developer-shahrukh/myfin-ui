@@ -45,7 +45,7 @@ const page = () => {
     getLoans().then((loans)=>{
       setLoans(loans);
     });
-    getLoanByCode().then((loan)=>{
+    getLoanByCode(loanCode).then((loan)=>{
       setLoans(loan);
     })
   },[loans])
