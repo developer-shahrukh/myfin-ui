@@ -272,3 +272,15 @@ const deleteSubCategory=(subCategoryId)=>{
     return error;
   });
 }
+
+const editSubCategor=(sbData)=>{
+  var promise=new Promise((resolve,reject)=>{
+    fetch(`/editSubCategory${data}`).then((response)=>{
+      return response.json();
+    }).then((sbOutData)=>{
+      resolve(sbOutData);
+    }).catch((error)=>{
+      rejects(error);
+    });
+  });
+}
