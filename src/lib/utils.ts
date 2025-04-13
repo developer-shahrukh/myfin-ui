@@ -273,12 +273,24 @@ const deleteSubCategory=(subCategoryId)=>{
   });
 }
 
-const editSubCategor=(sbData)=>{
+const editSubCategory=(sbData)=>{
   var promise=new Promise((resolve,reject)=>{
     fetch(`/editSubCategory${data}`).then((response)=>{
       return response.json();
     }).then((sbOutData)=>{
       resolve(sbOutData);
+    }).catch((error)=>{
+      rejects(error);
+    });
+  });
+}
+
+const editCategory=(categoryData)=>{
+  var promise=new Promise((resolve,reject)=>{
+    fetch(`/editCategory${data}`).then((response)=>{
+      return response.json();
+    }).then((categoryOutData)=>{
+      resolve(categoryOutData);
     }).catch((error)=>{
       rejects(error);
     });
