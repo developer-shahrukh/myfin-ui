@@ -20,6 +20,7 @@ import {
 import FormContainer from "@/components/FormContainer";
 import { Add, AddCircleOutline, Delete, Update } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
+import { getAccountByCode, getAccounts } from "@/lib/utils";
 
 ModuleRegistry.registerModules([
   NumberEditorModule,
@@ -43,7 +44,7 @@ const page = () => {
 
   const [accounts,setAccounts]=useState([]);
   const [account,setAccount]=useState([]);
-
+  const [accountCode,setAccountCode]=useState(0);
   useEffect(()=>{
     getAccounts().then((accountDetails)=>{
       setAccounts(accountDetails);

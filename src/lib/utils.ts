@@ -1,6 +1,6 @@
 const baseURL = process.env.NEXT_PUBLIC_API_URL;
 
-const getUsers = () => {
+export const getUsers = () => {
   var promise = new Promise((resolve, reject) => {
     fetch(`${baseURL}/users/getUsers`)
       .then((response) => {
@@ -16,10 +16,9 @@ const getUsers = () => {
   return promise;
 };
 
-const getUserByCode = () => {
-  var userCode = 0;
-  var promise = new Promise((resolve, reject) => {
-    fetch(`${baseURL}/users/getUser${userCode}`)
+export const getUserByCode = (userId:number) => {
+    var promise = new Promise((resolve, reject) => {
+    fetch(`${baseURL}/users/getUser${userId}`)
       .then((response) => {
         return response.json();
       })
@@ -33,15 +32,15 @@ const getUserByCode = () => {
   return promise;
 };
 
-const deleteUser=(userCode)=>{
-  fetch(`${baseURL}deleteUser/${userCode}`).then((response)=>{
+export const deleteUser=(userId:number)=>{
+  fetch(`${baseURL}deleteUser/${userId}`).then((response)=>{
     return response;
   }).catch((error)=>{
     return error;
   });
 }
 
-const getAccounts = () => {
+export const getAccounts = () => {
   var promise = new Promise((resolve, reject) => {
     fetch(`${baseURL}/accounts/getAccounts`)
       .then((response) => {
@@ -57,10 +56,9 @@ const getAccounts = () => {
   return promise;
 };
 
-const getAccountByCode = () => {
-  var accountCode = 0;
+export const getAccountByCode = (accountId:number) => {
   var promise = new Promise((resolve, reject) => {
-    fetch(`${baseURL}/accounts/getAccount${accountCode}`)
+    fetch(`${baseURL}/accounts/getAccount${accountId}`)
       .then((response) => {
         return response.json();
       })
@@ -74,7 +72,7 @@ const getAccountByCode = () => {
   return promise;
 };
 
-const deleteAccount=(accountId)=>{
+export const deleteAccount=(accountId:number)=>{
   fetch(`${baseURL}/deleteAccount/${accountId}`).then((response)=>{
     return response;
   }).catch((error)=>{
@@ -82,7 +80,7 @@ const deleteAccount=(accountId)=>{
   });
 }
 
-const getBank=()=>{
+export const getBank=()=>{
   var promise=new Promise((resolve,reject)=>{
     fetch(`${baseURL}/getBanks`).then((response)=>{
       return response.json();
@@ -95,9 +93,9 @@ const getBank=()=>{
   return promise;
 }
 
-const getBankByCode=(bankCode)=>{
+export const getBankByCode=(bankId:number)=>{
   var promise=new Promise((resolve,reject)=>{
-    fetch(`${baseURL}/getBank${bankCode}`).then((response)=>{
+    fetch(`${baseURL}/getBank${bankId}`).then((response)=>{
       return response.json();
     }).then((bank)=>{
       resolve(bank);
@@ -109,7 +107,7 @@ const getBankByCode=(bankCode)=>{
 }
 
 
-const deleteBank=(bankId)=>{
+export const deleteBank=(bankId:number)=>{
   fetch(`${baseURL}/deleteBank/${bankId}`).then((response)=>{
     return response;
   }).catch((error)=>{
@@ -117,7 +115,7 @@ const deleteBank=(bankId)=>{
   });
 }
 
-const getLoans = () => {
+export const getLoans = () => {
   var promise = new Promise((resolve, reject) => {
     fetch(`${baseURL}/loans/getLoans`)
       .then((response) => {
@@ -133,7 +131,7 @@ const getLoans = () => {
   return promise;
 };
 
-const getLoanByCode = (loanId) => {
+export const getLoanByCode = (loanId:number) => {
   var promise = new Promise((resolve, reject) => {
     fetch(`${baseURL}/loans/getLoan${loanId}`)
       .then((response) => {
@@ -150,7 +148,7 @@ const getLoanByCode = (loanId) => {
 };
 
 
-const deleteLoan=(loanId)=>{
+export const deleteLoan=(loanId:number)=>{
   fetch(`${baseURL}/deleteLoan/${loanId}`).then((response)=>{
     return response;
   }).catch((error)=>{
@@ -158,7 +156,7 @@ const deleteLoan=(loanId)=>{
   });
 }
 
-const getTransaction = () => {
+export const getTransaction = () => {
   var promise = new Promise((resolve, reject) => {
     fetch(`${baseURL}/transactions/getTransactions`)
       .then((response) => {
@@ -174,9 +172,9 @@ const getTransaction = () => {
   return promise;
 };
 
-const getTransactionByCode = (transactionCode) => {
+export const getTransactionByCode = (transactionId:number) => {
   var promise = new Promise((resolve, reject) => {
-    fetch(`${baseURL}/transactions/getTransaction${transactionCode}`)
+    fetch(`${baseURL}/transactions/getTransaction${transactionId}`)
       .then((response) => {
         return response.json();
       })
@@ -191,7 +189,7 @@ const getTransactionByCode = (transactionCode) => {
 };
 
 
-const deleteTransaction=(transactionId)=>{
+export const deleteTransaction=(transactionId:number)=>{
   fetch(`${baseURL}/deleteTransaction/${transactionId}`).then((response)=>{
     return response;
   }).catch((error)=>{
@@ -199,7 +197,7 @@ const deleteTransaction=(transactionId)=>{
   });
 }
 
-const getCategory = () => {
+export const getCategory = () => {
   var promise = new Promise((resolve, reject) => {
     fetch(`${baseURL}/categories/getCategories`)
       .then((response) => {
@@ -215,9 +213,9 @@ const getCategory = () => {
   return promise;
 };
 
-const getCategoryByCode = (categoryCode) => {
+export const getCategoryByCode = (categoryId:number) => {
   var promise = new Promise((resolve, reject) => {
-    fetch(`${baseURL}/categories/getCategory${categoryCode}`)
+    fetch(`${baseURL}/categories/getCategory${categoryId}`)
       .then((response) => {
         return response.json();
       })
@@ -232,7 +230,7 @@ const getCategoryByCode = (categoryCode) => {
 };
 
 
-const deleteCategory=(categoryId)=>{
+export const deleteCategory=(categoryId:number)=>{
   fetch(`${baseURL}/deleteCategory/${categoryId}`).then((response)=>{
     return response;
   }).catch((error)=>{
@@ -240,7 +238,7 @@ const deleteCategory=(categoryId)=>{
   });
 }
 
-const getSubCategories = () => {
+export const getSubCategories = () => {
   var promise = new Promise((resolve, reject) => {
     fetch(`${baseURL}/getSubCategories`)
       .then((response) => {
@@ -252,9 +250,9 @@ const getSubCategories = () => {
   return promise;
 };
 
-const getSubCategoriesByCode = (subCategoriesCode) => {
+export const getSubCategoriesByCode = (subCategoriesId:number) => {
   var promise = new Promise((resolve, reject) => {
-    fetch(`${baseURL}/getSubCategory${subCategoriesCode}`)
+    fetch(`${baseURL}/getSubCategory${subCategoriesId}`)
       .then((response) => {
         return response.json();
       })
@@ -265,7 +263,7 @@ const getSubCategoriesByCode = (subCategoriesCode) => {
 };
 
 
-const deleteSubCategory=(subCategoryId)=>{
+export const deleteSubCategory=(subCategoryId:number)=>{
   fetch(`${baseURL}/deleteSubCategory/${subCategoryId}`).then((response)=>{
     return response;
   }).catch((error)=>{
@@ -273,26 +271,26 @@ const deleteSubCategory=(subCategoryId)=>{
   });
 }
 
-const editSubCategory=(sbData)=>{
+export const editSubCategory=(subCategoryData:any)=>{
   var promise=new Promise((resolve,reject)=>{
-    fetch(`/editSubCategory${data}`).then((response)=>{
+    fetch(`/editSubCategory${subCategoryData}`).then((response)=>{
       return response.json();
-    }).then((sbOutData)=>{
+    }).then((sbOutData)=>{  
       resolve(sbOutData);
     }).catch((error)=>{
-      rejects(error);
+      reject(error);
     });
   });
 }
 
-const editCategory=(categoryData)=>{
+export const editCategory=(categoryData:any)=>{
   var promise=new Promise((resolve,reject)=>{
-    fetch(`/editCategory${data}`).then((response)=>{
+    fetch(`/editCategory${categoryData}`).then((response)=>{
       return response.json();
     }).then((categoryOutData)=>{
       resolve(categoryOutData);
     }).catch((error)=>{
-      rejects(error);
+      reject(error);
     });
   });
 }
