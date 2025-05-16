@@ -22,6 +22,7 @@ import {
 import { IconButton } from "@mui/material";
 import { AddCircleOutline } from "@mui/icons-material";
 import FormContainer from "@/components/FormContainer";
+import { getUserByCode, getUsers } from "@/lib/utils";
 
 ModuleRegistry.registerModules([
   NumberEditorModule,
@@ -40,11 +41,12 @@ const page = () => {
 
   const [users,setUsers]=useState([]);
   const [userById,setUserById]=useState([]);
+  const [userId,setUserId]=useState(0);
   useEffect(()=>{
     getUsers().then((users)=>{
       setUsers(users);
     });
-    getUserByCode(userCode).then((user)=>{
+    getUserByCode(userId).then((user)=>{
       setUserById(user);
     });
   },[]);

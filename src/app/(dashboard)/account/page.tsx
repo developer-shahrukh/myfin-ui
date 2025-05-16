@@ -45,6 +45,7 @@ const page = () => {
   const [accounts,setAccounts]=useState([]);
   const [account,setAccount]=useState([]);
   const [accountCode,setAccountCode]=useState(0);
+  
   useEffect(()=>{
     getAccounts().then((accountDetails)=>{
       setAccounts(accountDetails);
@@ -105,7 +106,7 @@ const page = () => {
     },
   ]);
 
-  const handleEdit = (data) => {
+  const handleEdit = (data:any) => {
     /*alert(`Edit row: ${params.data.user}`);
     const newData = data.filter((row) => row.id !== params.data.id);
     setData(newData);*/

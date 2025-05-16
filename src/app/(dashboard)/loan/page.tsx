@@ -22,6 +22,7 @@ import { useEffect, useMemo, useState } from "react";
 import { IconButton } from "@mui/material";
 import { AddCircleOutline } from "@mui/icons-material";
 import FormContainer from "@/components/FormContainer";
+import { getLoanByCode, getLoans } from "@/lib/utils";
 
 ModuleRegistry.registerModules([
   NumberEditorModule,
@@ -40,12 +41,13 @@ const page = () => {
   const gridStyle = { height: "100%", width: "100%" };
   const [loans,setLoans]=useState([]);
   const [loan,setLoan]=useState([]);
+  var loanId=0;
 
   useEffect(()=>{
     getLoans().then((loans)=>{
       setLoans(loans);
     });
-    getLoanByCode(loanCode).then((loan)=>{
+    getLoanByCode(loanId).then((loan)=>{
       setLoans(loan);
     })
   },[loans])

@@ -1,6 +1,6 @@
 "use client";
 import { AgGridReact } from "ag-grid-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ColDef, ICellRendererParams } from "ag-grid-community";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -20,6 +20,7 @@ import {
 import { IconButton } from "@mui/material";
 import { AddCircleOutline } from "@mui/icons-material";
 import FormContainer from "@/components/FormContainer";
+import { getBank, getBankByCode } from "@/lib/utils";
 
 ModuleRegistry.registerModules([
   NumberEditorModule,
@@ -38,12 +39,13 @@ const page = () => {
   const gridStyle = { height: "100%", width: "100%" };
   const [banks,setBanks]=useState([]);
   const [bank,setBank]=useState([]);
+  const [bankId,setBankId]=useState(0)
 
-  const useEffect(()=>{
-    getBank().then((banks)=>{
-      setBanks(banks);
+  useEffect(()=>{
+    getBank().then((bank:any)=>{
+      setBanks(bank);
     });
-    getBankByCode(bankCode).then((bankByCode)=>{
+    getBankByCode(bankId).then((bankByCode)=>{
       setBank(bankByCode);
     });
   },[]);

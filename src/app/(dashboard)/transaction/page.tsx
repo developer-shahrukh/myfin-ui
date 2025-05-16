@@ -22,6 +22,7 @@ import {
 import { IconButton } from "@mui/material";
 import { AddCircleOutline } from "@mui/icons-material";
 import FormContainer from "@/components/FormContainer";
+import { getTransaction, getTransactionByCode } from "@/lib/utils";
 
 ModuleRegistry.registerModules([
   NumberEditorModule,
@@ -37,15 +38,16 @@ ModuleRegistry.registerModules([
 const page = () => {
   const containerStyle = { height: "100%", width: "100%vw" };
   const gridStyle = { height: "90%", width: "100%" };
-
+  const [transaction,setTransaction]=useState([]);
   const [transactions,setTransactions]=useState([]);
-  const [transactionId,setTransactionById]=useState([]);
+  
+  var transactionId=0;
   useEffect(()=>{
     getTransaction().then((transactions)=>{
-      setTransaction(transactions);
+      setTransactions(transactions);
     });
-    getTransactionByCode(transactionCode).then((transactionId)=>{
-      setTransactionById(transactionId);
+    getTransactionByCode(transactionId).then((transaction)=>{
+      setTransaction(transaction);
     })
   },[]);
 

@@ -20,6 +20,7 @@ import {
 import FormContainer from "@/components/FormContainer";
 import { Add, AddCircleOutline, Delete, Update } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
+import { getSubCategories, getSubCategoriesByCode } from "@/lib/utils";
 
 ModuleRegistry.registerModules([
   NumberEditorModule,
@@ -32,21 +33,6 @@ ModuleRegistry.registerModules([
   ValidationModule,
 ]);
 
-const getSubCategories = () => {
-  var promise = new Promise((resolve, reject) => {
-    fetch(`/getSubCategories`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((subCategories) => {
-        resolve(subCategories);
-      })
-      .catch((error) => {
-        reject(error);
-      });
-  });
-  return promise;
-};
 
 const page = () => {
   const containerStyle = { width: "100%vw", height: "100%" };
@@ -57,12 +43,12 @@ const page = () => {
 
   const [subCategories,setSubCategories]=useState([]);
   const [subCategoryByCode,setSubCategoryByCode]=useState([]);
-
+  var sbCode=0;
   useEffect(()=>{
     getSubCategories().then((subCategories)=>{
       setSubCategories(subCategories);
     });
-    getSubCategoryByCode(sabCategoryCode).then((category)=>{
+    getSubCategoriesByCode(sbCode).then((category)=>{
       setSubCategoryByCode(category);
     })
   },[]);

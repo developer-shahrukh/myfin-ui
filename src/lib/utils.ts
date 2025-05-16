@@ -33,7 +33,7 @@ export const getUserByCode = (userId:number) => {
 };
 
 export const deleteUser=(userId:number)=>{
-  fetch(`${baseURL}deleteUser/${userId}`).then((response)=>{
+  fetch(`${baseURL}/deleteUser/${userId}`).then((response)=>{
     return response;
   }).catch((error)=>{
     return error;
@@ -147,6 +147,32 @@ export const getLoanByCode = (loanId:number) => {
   return promise;
 };
 
+
+export const getLoanPayements=()=>{
+  var promise=new Promise((resolve,reject)=>{
+    fetch(`${baseURL}/getLoanPayments`).then((response)=>{
+      return response.json();
+    }).then((loanPayments)=>{
+      resolve(loanPayments);
+    }).catch((error)=>{
+      resolve(error);
+    });
+  });
+  return promise;
+}
+
+export const getLoanPayment=(loanPaymentId:number)=>{
+  var promise=new Promise((resolve,reject)=>{
+    fetch(`${baseURL}/getLoanPayment/${loanPaymentId}`).then((response)=>{
+      return response.json();
+    }).then((loanPayment)=>{
+      resolve(loanPayment);
+    }).catch((error)=>{
+      reject(error);
+    });
+  });
+  return promise;
+}
 
 export const deleteLoan=(loanId:number)=>{
   fetch(`${baseURL}/deleteLoan/${loanId}`).then((response)=>{
@@ -273,7 +299,7 @@ export const deleteSubCategory=(subCategoryId:number)=>{
 
 export const editSubCategory=(subCategoryData:any)=>{
   var promise=new Promise((resolve,reject)=>{
-    fetch(`/editSubCategory${subCategoryData}`).then((response)=>{
+    fetch(`${baseURL}/editSubCategory${subCategoryData}`).then((response)=>{
       return response.json();
     }).then((sbOutData)=>{  
       resolve(sbOutData);
@@ -285,7 +311,7 @@ export const editSubCategory=(subCategoryData:any)=>{
 
 export const editCategory=(categoryData:any)=>{
   var promise=new Promise((resolve,reject)=>{
-    fetch(`/editCategory${categoryData}`).then((response)=>{
+    fetch(`${baseURL}/editCategory${categoryData}`).then((response)=>{
       return response.json();
     }).then((categoryOutData)=>{
       resolve(categoryOutData);

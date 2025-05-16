@@ -20,6 +20,7 @@ import {
 import FormContainer from "@/components/FormContainer";
 import { Add, AddCircleOutline, Delete, Update } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
+import { getLoanByCode, getLoanPayements, getLoanPayment } from "@/lib/utils";
 
 ModuleRegistry.registerModules([
   NumberEditorModule,
@@ -32,21 +33,6 @@ ModuleRegistry.registerModules([
   ValidationModule,
 ]);
 
-const getLoanPayments = () => {
-  var promise = new Promise((resolve, reject) => {
-    fetch(`/getLoanPayments`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((loanPayment) => {
-        resolve(loanPayment);
-      })
-      .catch((error) => {
-        reject(error);
-      });
-  });
-  return promise;
-};
 
 const page = () => {
   const containerStyle = { width: "100%vw", height: "100%" };
@@ -54,14 +40,16 @@ const page = () => {
   const [openModal, setOpenModal] = useState(false);
   const [modalType, setModalType] = useState<"update" | "delete" | null>(null);
   const [selectedRow, setSelectedRow] = useState(null);
-
+  const [loanPayment,setLoanPayment]=useState([]);
   const [loanPayments,setLoanPayments]=useState([]);
-  const [loanPaymentByCode,setLoanPaymentByCode]=useState([]);
+
+  var loanPaymentId=0;
+
   useEffect(()=>{
-    getLoanPayments().then((loanPayment)=>{
+    getLoanPayements().then((loanPayment)=>{
       setLoanPayments(loanPayment);
-    });
-    getLoanByCode(loanCode).then((loanDetails)=>{
+    });  
+    getLoanPayment(loanPaymentId).then((loanDetails)=>{
       setLoanPaymentByCode(loanDetails)
     });
   },[])

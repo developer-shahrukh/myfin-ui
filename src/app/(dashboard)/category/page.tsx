@@ -20,6 +20,7 @@ import {
 import FormContainer from "@/components/FormContainer";
 import { Add, AddCircleOutline, Delete, Update } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
+import { getCategory, getCategoryByCode, getSubCategories } from "@/lib/utils";
 
 ModuleRegistry.registerModules([
   NumberEditorModule,
@@ -32,28 +33,6 @@ ModuleRegistry.registerModules([
   ValidationModule,
 ]);
 
-const getCategories = () => {
-  var promise = new Promise((resolve, reject) => {
-    fetch(`/getCategories`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((categories) => {
-        resolve(categories);
-      })
-      .catch((error) => {
-        reject(error);
-      });
-  });
-  return promise;
-};
-
-const getCategoryByCode = (categoryCode) => {
-  getCategoryByCode(categoryCode).then((category)=>{
-    console.log(category);
-  });
-};
-
 
 const page = () => {
   const containerStyle = { width: "100%vw", height: "100%" };
@@ -64,11 +43,13 @@ const page = () => {
   
   const [categories,setCategories]=useState([]);
   const [category,setCategory]=useState([]);
+  var categoryId=0;
+  
   useEffect(()=>{
-      getCategories().then((categories)=>{
+      getSubCategories().then((categories:any)=>{
         setCategories(categories);
       });
-      getCategoryByCode(categoryCode).then((category)=>{
+      getCategoryByCode(categoryId).then((category:any)=>{
         setCategory(category);
       });
   },[]);
